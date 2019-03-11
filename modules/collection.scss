@@ -1,0 +1,59 @@
+// Name:            Collection
+// Description:     Styles for Collection
+//
+// Namespace:       `collection`
+//
+// Modifiers:       ``
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$collection-color: $text-color;
+$collection-active-bg-color: $primary;
+$collection-active-color: rgba($text-color, .4);
+$collection-padding-x: 2rem;
+$collection-padding-y: 2rem;
+$collection-border: $border-width solid $grey-900;
+$collection-radius: $core-radius;
+
+// Component: Component
+// ========================================================================
+
+.collection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  
+  .collection__item {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: .1rem;
+    padding: $collection-padding-y $collection-padding-x;
+    color: $collection-color;
+    
+    &:first-child {
+      @include border-top-radius($collection-radius);
+    }
+      
+    &:last-child {
+      @include border-bottom-radius($collection-radius);
+    }
+
+    &:not(:last-child) {
+      border-bottom: .1rem solid $grey-1000;
+    }
+  }
+
+  &.collection--sm {
+    .collection__item {
+      padding: ($collection-padding-y / 2) ($collection-padding-x / 2);
+    }
+  }
+}

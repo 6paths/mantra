@@ -1,0 +1,70 @@
+// Name            Card
+// Description     Styles for Card
+//
+// Namespace       `.card`
+//
+// Modifiers       `.card--flat`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$card-border: $border-width solid $border-color;
+$card-radius: $core-radius;
+$card-spacer-x: 1.6rem;
+$card-spacer-y: 1.2rem;
+$card-img-overlay-padding: 1.25rem;
+
+// Component Card
+// ========================================================================
+
+.card {
+  position: relative;
+  word-wrap: break-word;
+  background: $white;
+  
+  .card__title {
+    margin-bottom: $card-spacer-y;
+  }
+  
+  .card__subtitle {
+    margin-top: -($card-spacer-y);
+    margin-bottom: 0;
+    color: $grey-700;
+  }
+  
+  .card__body {
+    padding: $card-spacer-y $card-spacer-x;
+  }
+    
+  .card__text {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .card__header {
+    padding: $card-spacer-y $card-spacer-x;
+    margin-bottom: 0;
+    border-bottom: $card-border;
+  }
+    
+  .card__footer {
+    border-top: $card-border;
+  }
+    
+  .card__image-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: $card-img-overlay-padding;
+  }
+    
+  & ~ .card {
+    margin-top: 2rem;
+  }
+}

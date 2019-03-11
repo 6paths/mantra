@@ -1,0 +1,9 @@
+@each $name, $map in $colors {
+  $color: map-get($map, 'color');
+  $invert: map-get($map, 'invert');
+
+  .bg--#{$name} {
+    background-color: $color !important;
+    color: $invert !important;
+  }
+}

@@ -1,0 +1,64 @@
+// Animations
+@keyframes loading {
+  0% {
+  transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Loading
+.loading {
+  color: transparent !important;
+  min-height: .8rem;
+  pointer-events: none;
+  position: relative;
+
+  &::after {
+    animation: loading 500ms infinite linear;
+    border: .2rem solid $primary;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    margin-top: -.4rem;
+    margin-left: -.8rem;
+    z-index: $zIndex-0;
+  }
+
+  &.loading-lg {
+    min-height: 6rem;
+
+    &::after {
+      height: 6rem;
+      width: 6rem;
+      margin-left: -1rem;
+      border-width: .4rem;
+    }
+  }
+}
+  
+// Text
+@each $name, $color in $colors {
+  $color: map-get($color, 'color');
+
+  .text--#{$name} {
+    color: $color !important;
+  }
+}
+
+// Shapes
+.rounded {
+  border-radius: $core-radius;
+}
+
+.circle {
+  border-radius: 50rem;
+}

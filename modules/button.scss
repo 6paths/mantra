@@ -1,0 +1,267 @@
+// Name:            Button
+// Description:     Styles for buttons
+//
+// Namespace:       `btn`
+//
+// Modifiers:       `btn--sm`
+//                  `btn--lg`
+//                  `btn--outline`
+//                  `btn--clear`
+//                  `btn--raised`
+//                  `btn--block`
+//                  `btn--narrow`
+//                  `btn--$color`
+//
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+$btn-background: $grey-1000;
+$btn-background-hover: $grey-900;
+$btn-color: $text-color;
+$btn-border-color: $grey-900;
+$btn-border-color-hover: $grey-800;
+$btn-gradient: false;
+
+
+
+// Component: Component
+// ========================================================================
+
+.btn,
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background-color: $btn-background;
+  color: $btn-color;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  opacity: 1;
+  border: 0.1rem solid $btn-border-color;
+  border-radius: $core-radius;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: $btn-background-hover;
+    color: $btn-color;
+    text-decoration: none;
+    border-color: $btn-border-color-hover;
+    transition: all 0.2s ease;
+  }
+
+  &.disabled,
+  &[disabled] {
+    pointer-events: none;
+    cursor: default;
+    background-color: $btn-background;
+    border-color: $btn-background;
+    color: $grey-700;
+    opacity: 0.5;
+
+    &:hover,
+    &:focus {
+      background-color: $btn-background;
+      border-color: $btn-background;
+      color: $grey-700;
+    }
+  }
+
+  &.btn--outline {
+    background-color: transparent;
+    color: inherit;
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      background-color: rgba($grey-300, .1);
+      border-color: rgba($grey-300, .2);
+      color: inherit;
+    }
+  }
+
+  &.btn--clear {
+    background-color: transparent;
+    border-color: transparent;
+    color: inherit;
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      background-color: rgba($grey-300, .1);
+      border-color: transparent;
+      color: inherit;
+    }
+  }
+
+  &.btn--raised {
+    will-change: transform;
+
+    &:hover {
+      transform: translateY(-.2rem);
+      box-shadow: 0 .3rem .4rem 0 rgba($black, .2);
+    }
+  }
+
+  &.btn--sm {
+    font-size: 1rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    padding: 0 1.5rem;
+  }
+
+  &.btn--lg {
+    height: 4.8rem;
+    padding: 0 2rem;
+    font-size: 1.4rem;
+    line-height: 4.8rem;
+  }
+
+  &.btn--block {
+    display: block;
+    width: 100%;
+  }
+
+  &.btn--narrow {
+    padding: 0 1.5rem;
+  }
+
+  // Set styles for each colors defined in variables.styl
+  @each $name, $map in $colors {
+    $color: map-get($map, 'color');
+    $invert: map-get($map, 'invert');
+    
+    &.btn--#{$name} {
+      background-color: $color;
+      border-color: $color;
+      color: $invert;
+
+      &:hover,
+      &:focus {
+        background: spin($color, 6deg);
+        border-color: spin($color, 6deg);
+        color: $invert;
+      }
+
+      &:active {
+        border-color: transparent;
+      }
+
+      &.btn--outline {
+        background: transparent;
+        border-color: $color;
+        color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: rgba($color, .1);
+          border-color: rgba($color, .5);
+          color: $color;
+        }
+      }
+
+      &.btn--clear {
+        background-color: transparent;
+        border-color: transparent;
+        color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: rgba($color, .1);
+          border-color: transparent;
+          color: $color;
+        }
+      }
+
+      &.btn--inverted {
+        background: $invert;
+        color: $color;
+        
+        &:hover,
+        &:focus {
+          background: $invert;
+        }
+
+        &.btn--outline {
+          background-color: transparent;
+          border-color: $invert;
+          color: $invert;
+          
+          &:hover {
+            background: rgba($black, .5);
+          }
+        }
+      }
+      
+      &.btn--gradient {
+        background: linear-gradient(to top, spin($color, 18deg) 50%, $color);
+        background-size: .1rem 10rem;
+        border-color: spin($color, 18deg);
+
+        &:hover {
+          background-position: 0 50%;
+        }
+      }
+      
+      & .loading {
+        &::after {
+          border-bottom-color: $invert;
+          border-left-color: $invert;
+        }
+      }
+    }
+  }
+}
+
+// Button Groups
+.btn__group {
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  & .btn {
+    &:first-child:not(:last-child) {
+      @include border-right-radius(0);
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      margin-left: -.1rem;
+    }
+
+    &:last-child:not(:first-child) {
+      @include border-left-radius(0);
+      margin-left: -.1rem;
+    }
+
+    &:hover,
+    &:focus {
+      z-index: $zIndex-1;
+    }
+  }
+
+  &.btn__group--block {
+    display: flex;
+
+    & .btn {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+  }
+}

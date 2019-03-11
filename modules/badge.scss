@@ -1,0 +1,47 @@
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  background-color: $grey-1000;
+  border: $border-width solid transparent;
+  border-radius: $core-radius;
+  color: $primary;
+  font-size: $font-tiny;
+  font-weight: 700;
+  line-height: 2.1rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  
+  &.badge--outline {
+    background: transparent;
+    border-color: $border-color;
+  }
+    
+  &.badge--clear {
+    background: transparent;
+    
+    &:hover {
+      background: $grey-1000;
+      text-decoration: none;
+    }
+  }
+
+  @each $name, $map in $colors {
+    $color: map-get($map, 'color');
+    $invert: map-get($map, 'invert');
+
+    &.badge--#{$name} {
+      background: $color;
+      border-color: $color;
+      color: $invert;
+
+      &.badge--outline {
+        background: transparent;
+        color: $color;
+        border-color: $color;
+      }
+    }
+  }
+}

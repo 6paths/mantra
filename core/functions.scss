@@ -1,0 +1,57 @@
+// Responsive breakpoints
+$size-sm: 60rem;
+$size-md: 84rem;
+$size-lg: 96rem;
+
+// overlay($offset = 0)
+//   bottom :$offset;
+//   left: $offset;
+//   position: absolute;
+//   right: $offset;
+//   top: $offset;
+  
+@mixin border-top-radius($radius) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin media($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin from($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@function color-yiq($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 150) {
+    @return darken($color, 45%);
+  } @else {
+    @return $white;
+  }
+}

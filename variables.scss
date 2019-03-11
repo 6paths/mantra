@@ -1,0 +1,131 @@
+// Name:            Variables
+// Description:     Variables that are used globally
+//
+// Namespace:       `core`
+//
+// ========================================================================
+
+
+// Base
+// ========================================================================
+
+$core-font-size         : 62.5%;
+$core-font-weight       : 400;
+$core-lineheight        : 1.6;
+$core-width             : 117.5rem;
+$core-nav-height        : 6.4rem;
+$core-radius            : 0;
+$core-radius-inner      : 0;
+$border-width           : .1rem;
+
+$zIndex-0              : 0;
+$zIndex-1              : 100;
+$zIndex-2              : 200;
+$zIndex-3              : 300;
+$zIndex-4              : 400;
+$zIndex-5              : 500;
+$zIndex-6              : 600;
+$zIndex-7              : 700;
+$zIndex-8              : 800;
+$zIndex-9              : 900;
+$zIndex-10             : 1000;
+
+
+// Fonts
+// ========================================================================
+
+$ff-sans: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+$ff-mono: 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', monospace;
+
+
+// Color
+// ========================================================================
+
+$yiq-contrasted-threshold:  150;
+
+/**
+ * Greyscale
+ */
+$black            : #0a0a0a;
+$grey-100         : #222831;
+$grey-200         : lighten($grey-100, 5%);
+$grey-300         : lighten($grey-100, 10%);
+$grey-400         : lighten($grey-100, 20%);
+$grey-500         : lighten($grey-100, 30%);
+$grey-600         : lighten($grey-100, 40%);
+$grey-700         : lighten($grey-100, 50%);
+$grey-800         : lighten($grey-100, 74%);
+$grey-900         : lighten($grey-100, 80%);
+$grey-1000        : lighten($grey-100, 94%);
+$white            : #fff;
+
+/**
+ * Aliases for greyscale colors
+ */
+$grey-darker            : $grey-100;
+$grey-dark              : $grey-200;
+$grey                   : $grey-300;
+$grey-light             : $grey-600;
+$grey-lighter           : $grey-700;
+$grey-lightest          : $grey-800;
+
+/**
+ * Swatch
+ */
+$blue             : #09f;
+$green            : #0c9;
+$red              : #f66;
+$yellow           : #ffca28;
+$primary          : $red;
+
+/**
+ * Inverted Swatch
+ */
+$blue-invert      : color-yiq($blue);
+$green-invert     : color-yiq($green);
+$red-invert       : color-yiq($red);
+$yellow-invert    : color-yiq($yellow);
+$primary-invert   : color-yiq($primary);
+
+$colors: (
+  blue: (
+    color: $blue,
+    invert: $blue-invert
+  ),
+  green: (
+    color: $green,
+    invert: $green-invert
+  ),
+  red: (
+    color: $red,
+    invert: $red-invert
+  ),
+  yellow: (
+    color: $yellow,
+    invert: $yellow-invert
+  ),
+  primary: (
+    color: $primary,
+    invert: $primary-invert
+  ),
+  light: (
+    color: $grey-1000,
+    invert: $grey-100
+  ),
+  dark: (
+    color: $grey-100,
+    invert: $white
+  )
+);
+
+/**
+ * Aliases
+ */
+$bg-color          : $white;
+$text-color        : $black;
+$text-color-invert : $white;
+$meta-color        : $grey-700;
+$link-color        : $primary;
+$border-color      : $grey-300;
+$menu-bg           : $white;
+$blank-bg          : darken($menu-bg, 4%);

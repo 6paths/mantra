@@ -1,0 +1,197 @@
+// Name:            Hero
+// Description:     An eye-catching component
+//
+// Namespace:       `hero`
+//
+// Elements:        `hero__element`
+//
+// Modifiers:       `hero--modifier`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+// Component: hero
+// ========================================================================
+
+// Containers
+
+.hero__head,
+.hero__foot {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.hero__body {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  
+  @include from(md) {
+    padding: 6rem 0;
+  }
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 16rem;
+  background-color: $grey-1000;
+  
+  .navbar {
+    box-shadow: 0 1px 0 rgba($grey-500, 0.3);
+    
+    & .navbar__item,
+    .navbar__item a,
+    .navbar__item a:not(.btn) {
+      color: $text-color;
+      
+      &:hover,
+      &.active {
+        color: rgba($text-color, 0.9);
+      }
+    }
+  }
+  
+  .tabs {
+    ul {
+      border-bottom: none;
+    }
+  }
+  
+  
+  @each $name, $map in $colors {
+    $color: map-get($map, 'color');
+    $invert: map-get($map, 'invert');
+    
+    &.hero--#{$name} {
+      background-color: $color;
+      color: $invert;
+      
+      .title {
+        color: $invert;
+      }
+      
+      .subtitle {
+        color: rgba($invert, 0.9);
+        
+        a:not(.btn),
+        strong {
+          color: $invert;
+        }
+      }
+      
+      .navbar {
+        box-shadow: 0 1px 0 rgba($invert, 0.2);
+        
+        & .navbar__item, .navbar__item a, .navbar__item a:not(.btn) {
+          color: rgba($invert, 0.9);
+          
+          &:hover,
+          &.active {
+            color: $invert;
+          }
+        }
+      }
+      
+      .tabs {
+        a {
+          color: $invert;
+          opacity: 0.9;
+          
+          &:hover {
+            opacity: 1;
+          }
+        }
+        
+        li {
+          &.active a {
+            opacity: 1;
+          }
+        }
+        
+        &.tabs--boxed,
+        &.tabs--toggle {
+          a {
+            color: $invert;
+            
+            &:hover {
+              background-color: rgba($black, 0.1);
+            }
+          }
+          
+          li.active a {
+            &:hover {
+              background-color: $invert;
+              border-color: $invert;
+              color: $color;
+            }
+          }
+          
+          @include media(sm) {
+            .navbar-toggle {
+              span {
+                background-color: $invert;
+              }
+              
+              &:hover {
+                background-color: rgba($black, 0.1);
+              }
+              
+              &.active {
+                span {
+                  background-color: $invert;
+                }
+              }
+            }
+            
+            .navbar-menu {
+              .navbar-item {
+                border-top-color: rgba($invert, 0.2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  &.hero--md {
+    .hero__body {
+      height: 20rem;
+    }
+  }
+  
+  &.hero--lg {
+    .hero__body {
+      height: 30rem;
+    }
+  }
+
+  &.hero--xl {
+    .hero__body {
+      height: 50rem;
+    }
+  }
+  
+  &.hero--fh {
+    min-height: 100vh;
+    
+    .hero__body {
+      align-items: center;
+      display: flex;
+      
+      & > .container {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+// Name            Modal
+// Description     Styling for modal component
+//
+// Namespace       `modal`
+//
+// Modifiers       `modal--modifier`
+//
+// States          `modal--state`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+// Component Modal
+// ========================================================================
+
+.modal {
+  align-items: center;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 2rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  &:target,
+  &.active {
+    display: flex;
+    opacity: 1;
+    z-index: $zIndex-4;
+
+    .modal__overlay {
+      background: rgba($black, .6);
+      bottom: 0;
+      cursor: default;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .modal__container {
+      max-width: 64rem;
+      z-index: $zIndex-0;
+    }
+  }
+}
+
+.modal__container {
+  position: relative;
+  min-width: 42rem;
+  background: $white;
+  border-radius: $core-radius;
+  display: block;
+  padding: 0;
+  text-align: left;
+
+  .modal__header {
+    padding: 2rem;
+    border-radius: $core-radius $core-radius 0 0;
+
+    .modal__title {
+      font-size: $font-medium;
+      margin: 0;
+    }
+
+    .modal__subtitle {
+      font-size: $font-small;
+    }
+
+    @each $name, $map in $colors {
+      $color: map-get($map, 'color');
+      $invert: map-get($map, 'invert');
+
+      &.modal__header--#{$name} {
+        background-color: $color;
+        color: $invert;
+      }
+    }
+  }
+
+
+  .modal__body {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .modal__footer {
+    padding: 2rem;
+  }
+}

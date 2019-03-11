@@ -1,0 +1,54 @@
+$border-style: $border-width solid $border-color;
+
+$border-options: (
+  "top": "t",
+  "right": "r",
+  "bottom": "b",
+  "left": "l"
+);
+
+$border-widths: (
+  '2': .2rem,
+  '3': .3rem,
+  '4': .4rem,
+);
+
+.border {
+  border: $border-style;
+}
+
+@each $direction, $symbol in $border-options {
+  .b#{$symbol} {
+    border-#{$direction}: $border-style;
+  }
+
+  @each $val, $width in $border-widths {
+    .b#{$symbol}-#{$val} {
+      border-#{$direction}: $width solid $border-color;
+    }
+  }
+  
+  @each $name, $color in $colors {
+    $color: map-get($color, 'color');
+
+    .b#{$symbol}-c--#{$name} {
+      border-#{$direction}-color: $color !important;
+
+      &.bg--#{$name} {
+        border-color: darken($color, 15%) !important;
+      }
+    }
+  }
+}
+
+@each $name, $color in $colors {
+  $color: map-get($color, 'color');
+
+  .bc--#{$name} {
+    border-color: $color !important;
+
+    &.bg--#{$name} {
+      border-color: darken($color, 15%) !important;
+    }
+  }
+}
